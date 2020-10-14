@@ -15,7 +15,10 @@ export class StockListComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.stock = this.stockServ.getStocks();
+    this.stockServ.getStocks()
+    .subscribe(stocks => {
+    this.stock = stocks;
+    });
     }
 
 }

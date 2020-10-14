@@ -48,18 +48,22 @@ export class CreateStockComponent implements OnInit {
     constructor(public stockserv: StockServiceService) {
     this.resetVal = false;
   }
-  ngOnInit(): void {
-  }
+  ngOnInit():void {
+    
+    }
   
   addStock(){
     this.stock=new Stock(
       this.typeControl.value,this.nameControl.value, this.codeControl.value,this.priceControl.value,700);
       this.resetVal = true;
-      if(this.stockserv.createStock(this.stock)){
-       this.stockserv.message=`Successflly created stock with code --${this.stock.code}`;
+      if(this.stockserv.createStock(this.stock).subscribe((result: any)=>{
+       this.stockserv.message=`Successfully created stock with code --${this.stock.code}`;
       }
-
-      this.stocks=this.stockserv.getStocks();
+      ))
+      this.stockserv.getStocks()
+    .subscribe(stocks => {
+    this.stocks = stocks;
+    });
   }
 
 }
