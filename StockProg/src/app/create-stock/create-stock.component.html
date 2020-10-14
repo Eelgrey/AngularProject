@@ -1,0 +1,37 @@
+<h2>
+    Create Stock Form
+</h2>
+<div class="form-group">
+    <div>
+        <select name="stockType" [formControl]="typeControl">
+            <option value="NYSE">NYSE</option>
+            <option value="NYSF">NYSF</option>
+            <option value="NYSH">NYSH</option>
+        </select>
+        <br>
+        <br>
+        <input type="text" placeholder="Stock Name " name="name" [formControl]="nameControl">
+        <br>
+        <br>
+        <input type="text" placeholder="Stock Code " name="code" [formControl]="codeControl">
+        <br>
+        <br>
+        <input type="text" placeholder="Stock Price " name="price" [formControl]="priceControl">
+        <br>
+        <br>
+        <!-- <input type="checkbox" name="confirm" > I confirm the details. -->
+    </div>
+    <br>
+
+<button (click)="addStock()" >Add Stock</button>
+
+</div>
+<hr>
+<h4 *ngIf="resetVal">Stock name is {{stock | json}}</h4>
+<p>{{stockserv.message}}</p>
+
+<p *ngIf="resetVal">Updated records ::</p>
+<p *ngIf="resetVal">{{stocks | json}}</p>
+<hr *ngIf="resetVal">
+<br>
+
